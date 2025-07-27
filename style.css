@@ -1,0 +1,74 @@
+.math-wrapper {
+    width: 50%;
+    height: 80%;
+    min-width: 450px;
+    min-height: 545px;
+    margin: auto;
+    background-color: #bde27c;
+    padding: 3%;
+    border-radius: 2px;
+}
+
+.math-btn {
+    width: 40%;
+    max-width: 131px;
+    max-height: 37px;
+    height: 6vh;
+    font-size: 14px;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+}
+
+.sub {
+    position: relative;
+    bottom: 10px;
+    font-size: 13px;
+}
+
+.answer-block {
+    width: 80%;
+    height: 77%;
+    min-height: 370px;
+    margin: 6% auto 0;
+    background: #fff;
+    border: 3px #919191 dashed;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 30px;
+}
+
+.red {
+    color: red;
+}
+
+.value-input {
+
+    width: 20px;
+}
+
+.exsample-block {
+
+    width: 116px;
+
+    margin: 10px auto;
+}
+
+@media (max-width:500px) {
+    .math-wrapper {
+    width: 100%;
+    min-width: max-content;
+}
+
+    .exsample-block {}
+
+    .value-input {}
+
+    .sub {}
+
+    .math-btn {}
+
+    .answer-block {}
+
+}
