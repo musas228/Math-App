@@ -1,3 +1,22 @@
+function tabs() {
+    let tabsBtn = document.querySelectorAll(".navbar-tab")
+    let tabsPage = document.querySelectorAll(".page")
+    function clickTab(event) {
+        console.log(event);
+        console.log(event.target);
+
+        targetButton = event.target
+        tabsBtn.forEach((item) => { item.classList.remove("active") })
+        tabsPage.forEach((item) => { item.classList.remove("active-page") })
+        targetButton.classList.add('active')
+        console.log((document.getElementById(targetButton.id)));
+
+        (document.getElementById(`tab-${targetButton.id}`)).classList.add('active-page')
+    }
+    tabsBtn.forEach((item) => { item.addEventListener("click", clickTab) })
+
+
+}
 function sqrt() {
     let answerBlock = document.getElementById("text")
     let itemArr = []
@@ -15,8 +34,8 @@ function sqrt() {
     let disrim = 0
     disrim = (b * b) - 4 * a * (c + d)
     let sqrtNum = Math.sqrt(disrim)
-    let x1 = ((-1 * b) + sqrtNum) / 2 * a
-    let x2 = ((-1 * b) - sqrtNum) / 2 * a
+    let x1 = ((-1 * b) + sqrtNum) / (2 * a)
+    let x2 = ((-1 * b) - sqrtNum) / (2 * a)
     let aChar, bChar, cChar, dChar, cdSum
     if (a == 1) {
         aChar = 'x'
@@ -93,5 +112,56 @@ function sqrt() {
         X<sub>2</sub> = ${x2}
         `}
 }
+function isValidExpression(str) {
+    // Проверяем, что строка состоит только из чисел, знаков арифметики и скобок
+    return console.log(/^[\s\d\+\-\*\/$$\.]+$/.test(str));
 
+}
+function calculator() {
+    const numBtns = document.querySelectorAll("#num-btn")
+    const aqualBtn = document.querySelector("#aqual-btn")
+    const procBtn = document.querySelector("#proc-btn")
+    let calsLed = document.getElementById("cals-led")
+    let valueBtn
+    const clearBtn = document.querySelector("#clear")
+
+    let stringLed = []
+    let exp
+    numBtns.forEach((numBtn) => {
+        numBtn.addEventListener("click", (event) => {
+            valueBtn = (event.target).textContent
+            stringLed.push(valueBtn)
+            console.log(stringLed);
+            exp = stringLed.join("")
+            calsLed.value = exp
+
+            if (stringLed.includes(":")) {
+                stringLed[stringLed.indexOf(":")] = "/"
+                exp[exp.indexOf("/")] = ":"
+
+            }
+            clearBtn.addEventListener("click", () => {
+                calsLed.value = ""
+                exp = ""
+                stringLed = []
+            })
+
+
+        })
+
+    })
+
+    aqualBtn.addEventListener("click", () => {
+
+        console.log(eval(calsLed.value));
+        stringLed = [eval(calsLed.value)]
+        calsLed.value = eval(calsLed.value)
+
+
+    })
+}
+
+document.querySelector(".math-btn").onclick = sqrt
+tabs()
+calculator()
 

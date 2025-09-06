@@ -4,17 +4,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Math App</title>
     <link rel="stylesheet" href="./style.css">
     <link rel="stylesheet" href="./reset.css">
+    <link rel="icon" type="image/png" href="./img/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="./img/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="./img/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="./img/favicon/site.webmanifest" />
 </head>
 
 <body>
-    <div class="math-wrapper">
-        <div class="exsample-block"><input type="text" class="value-input" id="input-a">x<sub class="sub">2</sub><input type="text" class="value-input" id="input-b">x <input type="text" class="value-input" id="input-c">=<input type="text" class="value-input" id="input-d"></div>
-        <button class="math-btn" onclick="sqrt()">Решить</button>
-        <p class="answer-block" id="text">ответ будет тут</p>
-    </div>
+
+    <header class="header-math-app">
+        <img src="./img/logo.png" class="header-logo" alt="">
+        <nav class="navbar-tabs">
+            <button class="navbar-tab" id="page-1">Уравнение</button>
+            <button class="navbar-tab active" id="page-2">Калькулятор</button>
+            <button class="navbar-tab" id="page-3">Графики</button>
+        </nav>
+    </header>
+    <main class="main-math">
+
+        <div class="page math-wrapper " id="tab-page-1">
+            <div class="exsample-block"><input type="text" class="value-input" id="input-a">x<sub
+                    class="sub">2</sub><input type="text" class="value-input" id="input-b">x <input type="text"
+                    class="value-input" id="input-c">=<input type="text" class="value-input" id="input-d"></div>
+            <button class="math-btn">Решить</button>
+            <p class="answer-block" id="text">ответ будет тут</p>
+        </div>
+
+        <div class="page calc-wrapper active-page" id="tab-page-2">
+            <div class="calc-block">
+                <div class="calc-main">
+                    <div class="calc-header">
+                        
+                        <input class="cals-led" type="text" id="cals-led" placeholder="Введите выражение">
+                
+                    </div>
+                    <div class="calc-body">
+                        <button class="calc-btn" id="num-btn">1</button>
+                        <button class="calc-btn" id="num-btn">2</button>
+                        <button class="calc-btn" id="num-btn">3</button>
+                        <button class="calc-btn" id="num-btn">4</button>
+                        <button class="calc-btn" id="num-btn">5</button>
+                        <button class="calc-btn" id="num-btn">6</button>
+                        <button class="calc-btn" id="num-btn">7</button>
+                        <button class="calc-btn" id="num-btn">8</button>
+                        <button class="calc-btn" id="num-btn">9</button>
+                        <button class="calc-btn" id="num-btn">0</button>
+                        <button class="calc-btn" id="num-btn">+</button>
+                        <button class="calc-btn" id="num-btn">-</button>
+                        <button class="calc-btn" id="num-btn">x</button>
+                        <button class="calc-btn" id="num-btn">:</button>
+                        <button class="calc-btn" id="aqual-btn">=</button>
+                        <button class="calc-btn" id="proc-btn">%</button>
+                        <button class="calc-btn">.</button>
+                        <button class="calc-btn">+/-</button>
+                        <button class="calc-btn" id="clear">С</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page graf-wrapper" id="tab-page-3">
+            <div class="graf-block">график</div>
+        </div>
+
+
+        </div>
+    </main>
+
 </body>
 <script src="./scrpt.js"></script>
 

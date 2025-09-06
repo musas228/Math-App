@@ -1,12 +1,69 @@
+.header-math-app {}
+
+.header-logo {
+    width: 20%;
+    margin: 21px auto;
+    display: block;
+}
+
+.navbar-tabs {
+    width: 50%;
+    margin: 24px auto;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.navbar-tab {
+    width: 30%;
+    height: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    background: #ffb34d;
+    border-radius: 10px;
+    box-shadow: 7px 5px 11px 5px #aaaaaa;
+}
+
+.active {
+    background: #ff5900;
+    color: #ffe7e7;
+}
+
+.page {
+    display: none;
+}
+
+.main-math {}
+
+.calc-wrapper {}
+
+.calc-block {
+    width: 50%;
+    height: 60vh;
+    background: #0079ff;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding: 3% 5% 5% 5%;
+}
+
+.graf-wrapper {}
+
+.graf-block {}
+
 .math-wrapper {
     width: 50%;
     height: 80%;
     min-width: 450px;
-    min-height: 545px;
-    margin: auto;
+    /* min-height: 545px; */
+    margin: auto auto 50px;
     background-color: #bde27c;
     padding: 3%;
+
     border-radius: 2px;
+    box-shadow: 13px 17px 20px 0px #a3a3a3;
 }
 
 .math-btn {
@@ -24,6 +81,10 @@
     position: relative;
     bottom: 10px;
     font-size: 13px;
+}
+
+.active-page {
+    display: block;
 }
 
 .answer-block {
@@ -55,11 +116,40 @@
     margin: 10px auto;
 }
 
+.calc-main {width: 70%;background: #e8e8e8;height: 50vh;display: flex;flex-direction: column;}
+
+.calc-header {
+    width: 100%;
+    background: #fff;
+    height: 75px;
+}
+
+.cals-led {
+    width: 100%;
+    height: 100%;
+}
+
+.calc-body {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 1%;
+    background: #c2d6ff;
+}
+
+.calc-btn {
+    background: #ebf2ff;
+    border-radius: 2px;
+}
+
 @media (max-width:500px) {
     .math-wrapper {
-    width: 100%;
-    min-width: max-content;
-}
+        width: 100%;
+        min-width: max-content;
+    }
 
     .exsample-block {}
 
