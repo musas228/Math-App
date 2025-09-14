@@ -114,9 +114,9 @@ function sqrt() {
 }
 function isValidExpression(str) {
     // Проверяем, что строка состоит только из чисел, знаков арифметики и скобок
-    return console.log(/^[\s\d\+\-\*\/$$\.]+$/.test(str));
-
+    return /^[\s\d\+\-\*\/\(\)$$\.]+$/.test(str);
 }
+
 function calculator() {
     const numBtns = document.querySelectorAll("#num-btn")
     const aqualBtn = document.querySelector("#aqual-btn")
@@ -126,42 +126,43 @@ function calculator() {
     const clearBtn = document.querySelector("#clear")
 
     let stringLed = []
-    let exp
+    let exp = ""
+    const getClear = () => {
+        calsLed.value = ""
+        exp = ""
+        stringLed = []
+    }
+    clearBtn.addEventListener("click", getClear)
     numBtns.forEach((numBtn) => {
         numBtn.addEventListener("click", (event) => {
             valueBtn = (event.target).textContent
             stringLed.push(valueBtn)
-            console.log(stringLed);
             exp = stringLed.join("")
             calsLed.value = exp
-
-            if (stringLed.includes(":")) {
-                stringLed[stringLed.indexOf(":")] = "/"
-                exp[exp.indexOf("/")] = ":"
-
-            }
-            clearBtn.addEventListener("click", () => {
-                calsLed.value = ""
-                exp = ""
-                stringLed = []
-            })
-
-
         })
-
     })
 
     aqualBtn.addEventListener("click", () => {
-
-        console.log(eval(calsLed.value));
-        stringLed = [eval(calsLed.value)]
-        calsLed.value = eval(calsLed.value)
-
-
+        if (stringLed.includes(":")) {
+            stringLed[stringLed.indexOf(":")] = "/"
+        }
+        if (stringLed.includes("x")) {
+            stringLed[stringLed.indexOf("x")] = "*"
+        }
+        exp = stringLed.join("")
+        if (isValidExpression(exp)) {
+            calsLed.value = eval(exp)
+        } else {
+            getClear()
+            console.log(stringLed, exp);
+            
+            calsLed.placeholder = "ошибка, введите выражение"
+            
+        }
     })
 }
-
 document.querySelector(".math-btn").onclick = sqrt
 tabs()
 calculator()
+
 
