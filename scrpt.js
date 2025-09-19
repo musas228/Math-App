@@ -117,48 +117,44 @@ function isValidExpression(str) {
     return /^[\s\d\+\-\*\/\(\)$$\.]+$/.test(str);
 }
 function calculator() {
-    const numBtns = document.querySelectorAll("#num-btn")
-    const aqualBtn = document.querySelector("#aqual-btn")
-    const procBtn = document.querySelector("#proc-btn")
-    const backSpace = document.getElementById("backspace-btn")
-    const calsLed = document.getElementById("cals-led")
-    let valueBtn
-    const clearBtn = document.querySelector("#clear")
+
+    const calsLed = document.getElementById("cals-led");
+    const numBtns = document.querySelectorAll("#num-btn");
+    const clearBtn = document.querySelector("#clear");
+    const backSpace = document.getElementById("backspace-btn");
+    const aqualBtn = document.querySelector("#aqual-btn");
+    // ввод в поле с помощью кнопок и с помощью клавиатуры
+    numBtns.forEach((btn) => {
+        btn.addEventListener("click", () => {
+            calsLed.value += btn.textContent
+        })
+    })
+
+    // кнопка очистки поля целиком
     const getClear = () => {
         calsLed.value = ""
     }
-  
     clearBtn.addEventListener("click", getClear)
-    numBtns.forEach((numBtn) => {
-        numBtn.addEventListener("click", (event) => {
-            valueBtn = (event.target).textContent
-            // refactor()
-            calsLed.value = calsLed.value + valueBtn
-        })
-    })
-    // let valueLed = (calsLed.value)
-    aqualBtn.addEventListener("click", () => {
-        if ((calsLed.value).includes(":")) {
-            const newValueStr = (calsLed.value).replace(/:/g ,"/")
-            calsLed.value = newValueStr
-        }
-       if ((calsLed.value).includes("x")) {
-            const newValueStr = (calsLed.value).replace(/x/g ,"*")
-            calsLed.value = newValueStr
-        }
-        if (isValidExpression(calsLed.value)) {
 
-            calsLed.value = eval(calsLed.value)
+    // кнопка стирания одного символа
+
+
+    backSpace.addEventListener('click', function () {
+        calsLed.value = calsLed.value.slice(0, -1);
+    })
+
+    // решение выражения при нажати
+    aqualBtn.addEventListener("click", () => {
+        let exp = calsLed.value
+        calsLed.led = exp.replace(/:/g, "/").replace(/x/g, "*")
+        // проверка содержимого
+        if (isValidExpression(expression)) {
+            calsLed.value = eval(expression);
         } else {
-            getClear()
-            calsLed.placeholder = "ошибка, введите выражение"
+            calsLed.value = "";
+            calsLed.placeholder = "ошибка, введите выражение";
         }
     })
-    backSpace.addEventListener('click', function () {
-        let value = calsLed.value;
-        value = value.slice(0, -1);
-        calsLed.value = value;
-    });
 }
 document.querySelector(".math-btn").onclick = sqrt
 tabs()
