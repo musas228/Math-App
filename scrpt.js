@@ -116,53 +116,50 @@ function isValidExpression(str) {
     // Проверяем, что строка состоит только из чисел, знаков арифметики и скобок
     return /^[\s\d\+\-\*\/\(\)$$\.]+$/.test(str);
 }
-
 function calculator() {
     const numBtns = document.querySelectorAll("#num-btn")
     const aqualBtn = document.querySelector("#aqual-btn")
     const procBtn = document.querySelector("#proc-btn")
-    let calsLed = document.getElementById("cals-led")
+    const backSpace = document.getElementById("backspace-btn")
+    const calsLed = document.getElementById("cals-led")
     let valueBtn
     const clearBtn = document.querySelector("#clear")
-
-    let stringLed = []
-    let exp = ""
     const getClear = () => {
         calsLed.value = ""
-        exp = ""
-        stringLed = []
     }
+  
     clearBtn.addEventListener("click", getClear)
     numBtns.forEach((numBtn) => {
         numBtn.addEventListener("click", (event) => {
             valueBtn = (event.target).textContent
-            stringLed.push(valueBtn)
-            exp = stringLed.join("")
-            calsLed.value = exp
+            // refactor()
+            calsLed.value = calsLed.value + valueBtn
         })
     })
-
+    // let valueLed = (calsLed.value)
     aqualBtn.addEventListener("click", () => {
-        if (stringLed.includes(":")) {
-            stringLed[stringLed.indexOf(":")] = "/"
+        if ((calsLed.value).includes(":")) {
+            const newValueStr = (calsLed.value).replace(/:/g ,"/")
+            calsLed.value = newValueStr
         }
-        if (stringLed.includes("x")) {
-            stringLed[stringLed.indexOf("x")] = "*"
+       if ((calsLed.value).includes("x")) {
+            const newValueStr = (calsLed.value).replace(/x/g ,"*")
+            calsLed.value = newValueStr
         }
-        exp = stringLed.join("")
-        if (isValidExpression(exp)) {
-            calsLed.value = eval(exp)
+        if (isValidExpression(calsLed.value)) {
+
+            calsLed.value = eval(calsLed.value)
         } else {
             getClear()
-            console.log(stringLed, exp);
-            
             calsLed.placeholder = "ошибка, введите выражение"
-            
         }
     })
+    backSpace.addEventListener('click', function () {
+        let value = calsLed.value;
+        value = value.slice(0, -1);
+        calsLed.value = value;
+    });
 }
 document.querySelector(".math-btn").onclick = sqrt
 tabs()
 calculator()
-
-
