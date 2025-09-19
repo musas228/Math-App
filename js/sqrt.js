@@ -1,22 +1,4 @@
-function tabs() {
-    let tabsBtn = document.querySelectorAll(".navbar-tab")
-    let tabsPage = document.querySelectorAll(".page")
-    function clickTab(event) {
-        console.log(event);
-        console.log(event.target);
-
-        targetButton = event.target
-        tabsBtn.forEach((item) => { item.classList.remove("active") })
-        tabsPage.forEach((item) => { item.classList.remove("active-page") })
-        targetButton.classList.add('active')
-        console.log((document.getElementById(targetButton.id)));
-
-        (document.getElementById(`tab-${targetButton.id}`)).classList.add('active-page')
-    }
-    tabsBtn.forEach((item) => { item.addEventListener("click", clickTab) })
-
-
-}
+export default sqrt
 function sqrt() {
     let answerBlock = document.getElementById("text")
     let itemArr = []
@@ -112,50 +94,3 @@ function sqrt() {
         X<sub>2</sub> = ${x2}
         `}
 }
-function isValidExpression(str) {
-    // Проверяем, что строка состоит только из чисел, знаков арифметики и скобок
-    return /^[\s\d\+\-\*\/\(\)$$\.]+$/.test(str);
-}
-function calculator() {
-
-    const calsLed = document.getElementById("cals-led");
-    const numBtns = document.querySelectorAll("#num-btn");
-    const clearBtn = document.querySelector("#clear");
-    const backSpace = document.getElementById("backspace-btn");
-    const aqualBtn = document.querySelector("#aqual-btn");
-    // ввод в поле с помощью кнопок и с помощью клавиатуры
-    numBtns.forEach((btn) => {
-        btn.addEventListener("click", () => {
-            calsLed.value += btn.textContent
-        })
-    })
-
-    // кнопка очистки поля целиком
-    const getClear = () => {
-        calsLed.value = ""
-    }
-    clearBtn.addEventListener("click", getClear)
-
-    // кнопка стирания одного символа
-
-
-    backSpace.addEventListener('click', function () {
-        calsLed.value = calsLed.value.slice(0, -1);
-    })
-
-    // решение выражения при нажати
-    aqualBtn.addEventListener("click", () => {
-        let exp = calsLed.value
-        calsLed.led = exp.replace(/:/g, "/").replace(/x/g, "*")
-        // проверка содержимого
-        if (isValidExpression(expression)) {
-            calsLed.value = eval(expression);
-        } else {
-            calsLed.value = "";
-            calsLed.placeholder = "ошибка, введите выражение";
-        }
-    })
-}
-document.querySelector(".math-btn").onclick = sqrt
-tabs()
-calculator()
